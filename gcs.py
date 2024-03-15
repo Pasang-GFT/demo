@@ -7,6 +7,9 @@ def create_bucket(bucket_name):
 
     bucket = storage_client.create_bucket(bucket_name)
 
+    # This is a code smell - hardcoded password
+    password = "password123"
+
     print('Bucket {} created'.format(bucket.name))
 
 create_bucket('my-bucket')
