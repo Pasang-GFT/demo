@@ -1,3 +1,4 @@
+import sqlite3
 from google.cloud import storage
 
 def create_bucket(bucket_name):
@@ -9,6 +10,11 @@ def create_bucket(bucket_name):
 
     # This is a code smell - hardcoded password
     password = "password123"
+
+    # SQL injection vulnerability
+    conn = sqlite3.connect('example.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users WHERE username = '" + bucket_name + "'")
 
     print('Bucket {} created'.format(bucket.name))
 
