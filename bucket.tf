@@ -12,3 +12,7 @@ resource "google_storage_bucket" "bucket" {
   project  = "dev-env-1-412811"
   location = "US"
 }
+
+output "bucket_name" {
+  value = "${google_storage_bucket.bucket.name}"
+}
